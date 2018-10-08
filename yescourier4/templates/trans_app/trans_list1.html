@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+
+
+<div align="center">
+ <form method="GET" action="{% url 'trans_app:trans_list_search' %}">
+<input type="text" name="search">
+<button type="submit">search</button>
+</form>
+ </div>
+
+
+
+
+{% endblock %}

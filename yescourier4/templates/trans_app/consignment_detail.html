@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<div>
+	<div class="container">
+
+		<h2>Success</h2>
+		<table class="table table-bordered">
+			<thead>
+      	<tr>
+        <th>Consignment ID</th><th>{{consignment_details.consignment_id}}</th>
+		</tr>
+    		</thead>
+    		<tbody>
+    	<tr>
+        <td>Username</td>
+        <td>{{consignment_details.customer_id}}</td>
+      	</tr>
+
+      	<tr>
+      		 <td>From</td>
+        <td>{{consignment_details.from_c}}</td>
+      	</tr>
+      	<tr>
+      		 <td>To</td>
+        <td>{{consignment_details.where_c}}</td>
+      	</tr>
+      	<tr>
+      		 <td>Price</td>
+        <td>{{consignment_details.price_c}}</td>
+      	</tr>
+		</tbody>
+		</table>
+		<br>
+		<br>
+
+	    <div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/FBA46147D985FA0963C8E3FA2C5C5B06'><img src='https://www.payumoney.com/media/images/payby_payumoney/new_buttons/21.png' /></a></div> 
+<br>
+         <button class="btn btn-info" onclick="myFunction()" ><span class="glyphicon glyphicon-print"></span> PRINT</button>
+<br>
+         <a href="{% url 'trans_app:print_pdf' %}"><button class="btn btn-info" ><span class="glyphicon glyphicon-paperclip"></span> PDF </button></a>
+
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
+
+
+	</div>
+   
+</div>
+
+
+{% endblock %}

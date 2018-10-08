@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>YES Courier</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{% static 'user_app/mystyle.css' %}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<style type="text/css">
+	@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+
+body {
+  background: #cce6ff
+; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #cce6ff, #8DC26F);
+  background: -moz-linear-gradient(right, #cce6ff, #8DC26F);
+  background: -o-linear-gradient(right, #cce6ff, #8DC26F);
+  background: linear-gradient(to left, #cce6ff, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+</style>
+
+
+
+	</head>
+	<body>
+		<!--Top navigation bar-->
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="{% url 'home' %}"><strong><b>YES Courier</b></strong></a>
+			   </div>
+			   <ul class="nav navbar-nav">
+			      <li class="active"><a href="{% url 'home' %}">Home</a></li>
+
+					{% if user.is_superuser %}
+
+
+					<li><a href="{% url 'trans_app:ad' %}">CONSIGNMENT LISTS</a></li>
+
+					<li><a href="{% url 'user_app:logout' %}">Log Out</a></li>
+
+
+
+					{% else %}
+
+
+
+
+
+
+
+			      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Services <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="{% url 'trans_app:trans_list1' %}">Consignment Tracking</a></li>
+			          {% if user.is_authenticated %}
+			      <li><a href="{% url 'trans_app:pickup' %}">PICKUP</a></li>		     
+
+				{% endif %}
+			    
+			        </ul>
+			      </li>
+			      <li><a href="{% url 'about' %}">About Us</a></li>
+			      <li><a href="{% url 'contact' %}">Contact</a></li>
+			      {% if user.is_authenticated %}
+			      <li><a href="{% url 'trans_app:pickup' %}">PICKUP</a></li>
+			      <li><a href="{% url 'trans_app:trans_list' %}">TRACKING</a></li>
+			      <li><a href="{% url 'user_app:logout' %}">Log Out</a></li>
+			      {% else %}
+			      <li><a href="{% url 'user_app:login' %}">Log In</a></li>
+				  <li><a href="{% url 'user_app:signup' %}">Sign Up</a></li>
+
+				{% endif %}
+				{% endif %}
+			    </ul>
+			</div>
+		</nav>
+		<!--End navigation bar -->
+
+	{% block content %}
+
+	{% endblock %}
+
+	</div>
+</body>
+</html>

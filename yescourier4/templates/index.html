@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+	
+<!--Image carousel-->
+
+		<div class="container">
+		    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		 
+		    <ol class="carousel-indicators">
+		      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>  
+		      <li data-target="#myCarousel" data-slide-to="1"></li>
+		      <li data-target="#myCarousel" data-slide-to="2"></li>
+		    </ol>
+		    <div class="carousel-inner" id="myCarousel">
+		    	<div class="item active">
+		    		<img src="{% static "user_app/abc.jpg" %}" width=100%>
+		    		<div class="carousel-caption">
+		    			<div class="text-block">
+        				<h3>Customised Services<br><small>Capability to manage various product and customised delivery solutions based on the nature of products helps in managing the complexity of delivery effeciently</small></h3>
+        				</div>
+      				</div>
+		    	</div>
+		    	<div class="item">
+		    		<img src="{% static "user_app/abc2.jpg" %}" width=100%>
+		    		<div class="carousel-caption">
+		    			<div class="text-block">
+        				<h3>Customer Experience<br><small>Customer experience is of utmost importance and should be backed by training delivery professionals and customer services team</small></h3>
+        				</div>
+        			</div>
+
+		    	</div>
+		    	<div class="item">
+		    		<img src="{% static "user_app/abc3.jpg" %}" width=100%>
+		    		<div class="carousel-caption">
+		    			<div class="text-block">
+        				<h3>Tracking<br><small>Robust IT infrastructure improves the visibility of the shipment and flow of information</small></h3>
+        				</div>
+        			</div>
+		    	</div>
+		    </div>
+
+		    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+	      	<span class="glyphicon glyphicon-chevron-left"></span>
+	 		</a>
+	    	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+	      	<span class="glyphicon glyphicon-chevron-right"></span>
+	    	</a>
+	    </div>
+
+		
+
+		<!--End image carousel-->
+
+<!--Column content-->
+		<div class="container">
+ 			<div class="row">
+    			<div class="col-sm-6">
+      				<center><h3>Our Vision !</h3></center>
+      					<p>Being the medium - always advancing, organised, systematic and outperforming.<br><br>Being the methodology - aimed at Brand enhancement by exploitation of I.T. and other technologies with sustained quality standard, training and motivation.<br><br>Be always advancing and outperforming in an on guard & systematic manner.<br><br>Be more customer friendly and achieve brand enhancement by the exploitation of IT and other technologies for sustained quality standards, training and motivation.<br><br>To be identified as the largest Courier in the Country with the presence felt in every nook and corner of India.<br><br>To be identified as an economical and effective Courier Service.</p>
+      
+   				 </div>
+    			<div class="col-sm-6">
+    				
+      				{% if user.is_authenticated %}
+      				<center><h3>Pick UP !</h3></center>
+      				<p><br>USE OUR PICKUP FACILICTY TO EASE YOUR JOB ON SENDING <br>
+      					<br>CONSIGNMENT. WE PROVIDE SERVICE ON YOUR FINGER TIPS<br> <br> Please 
+      					click the 
+			      <a href="{% url 'trans_app:pickup' %}">PICKUP !!</a> for avial this.<br>
+			      </p>
+			      {% else %}
+			      
+
+				
+      				<div class="tab">
+  						<button class="tablinks" onclick="openCity(event, 'London')">TRACK</button>
+				  		
+				  		<label>SIGN IN <span class="glyphicon glyphicon-user"></span</label>
+				  		
+					</div>
+
+					<div id="London" class="tabcontent">
+ 		 				<div align="center">
+ 		 					<form method="GET" action="{% url 'trans_app:trans_list_search'%}">
+							<input type="text" name="search">
+							<button type="submit">search</button>
+							</form>
+ 		 				</div>
+
+ 						
+					</div>
+
+					 <div id="Paris" class="tabcontent">
+					<!--	<h3>Log In</h3>
+						Username : <input type="text" name="bid"><br><br>
+					 		 				Password : <input type="password" name="pass"><br><br>
+					 		 				<a href="#">Forget password?</a><br><br>
+					 		 				<button type="submit" >Sign in</button>
+					
+					  -->
+
+
+
+
+
+
+
+
+					</div> 
+
+					{% endif %}
+
+					</div>
+    			</div>
+			</div>
+		</div>
+		<script>
+			function openCity(evt, cityName) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none";
+		    }
+		    tablinks = document.getElementsByClassName("tablinks");
+		    for (i = 0; i < tablinks.length; i++) {
+		        tablinks[i].className = tablinks[i].className.replace(" active", "");
+		    }
+		    document.getElementById(cityName).style.display = "block";
+		    evt.currentTarget.className += " active";
+			}
+		</script>
+	
+
+          <!--End column contents-->
+
+          <!--footer-->
+        <footer class="footer">
+  			<p>YES Courier . Developed by : Meghanath</p>
+  			<p>Contact information: <a href="mailto:someone@example.com">mail@yescourier.in</a></p>
+		</footer>
+
+          <!--End footer-->
+
+
+{% endblock %}

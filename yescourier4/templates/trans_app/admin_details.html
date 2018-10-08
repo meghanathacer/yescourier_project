@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+{% if user.is_superuser %}
+
+
+</style>
+<div align="center">
+
+<div class="container">
+  <h2>Details </h2>
+<table class="table table-bordered" bgcolor="#e6f7ff" style="text-align: center;">
+			<thead>
+      	<tr>
+        <th style="text-align: center;">Consignment ID</th><th style="text-align: center;">{{consignment_detail.consignment_id}}</th>
+		</tr>
+    		</thead>
+    		<tbody>
+    	<tr>
+        <td>Username</td>
+        <td>{{consignment_detail.customer_id}}</td>
+      	</tr>
+
+      	<tr>
+      		 <td>From</td>
+        <td>{{consignment_detail.from_c}}</td>
+      	</tr>
+      	<tr>
+      		 <td>To</td>
+        <td>{{consignment_detail.where_c}}</td>
+      	</tr>
+      	<tr>
+      		 <td>Price</td>
+        <td>{{consignment_detail.price_c}}</td>
+      	</tr>
+
+
+      	<tr>
+      		 <td>Status</td>
+        <td>{{consignment_detail.status_n}}</td>
+      	</tr>
+
+
+
+		</tbody>
+		</table>
+		<a href="{% url 'trans_app:update' pk=consignment_detail.id %}"><button class="btn btn-danger" >UPDATE</button></a>
+</div>
+
+</div>
+
+{% else %}
+Access denied
+{% endif %}
+
+{% endblock %}
